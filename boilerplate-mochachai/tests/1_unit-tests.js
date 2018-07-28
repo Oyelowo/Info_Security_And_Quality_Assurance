@@ -10,32 +10,32 @@ suite('Unit Tests', function(){
   
     /** 1 - Use assert.isNull() or assert.isNotNull() to make the tests pass. **/
     test('#isNull, #isNotNull', function(){
-      assert.fail(null, 'this is an optional error description - e.g. null is null');
-      assert.fail( 1, '1 is not null');
+      assert.isNull(null, 'this is an optional error description - e.g. null is null');
+      assert.isNotNull( 1, '1 is not null');
     });
   
     /** 2 - Use assert.isDefined() or assert.isUndefined() to make the tests pass. **/
     test('#isDefined, #isUndefined', function(){
-      assert.fail( null, 'null is not undefined');
-      assert.fail( undefined, 'undefined IS undefined');
-      assert.fail( 'hello', 'a string is not undefined' );
+      assert.isDefined( null, 'null is not undefined');
+      assert.isUndefined( undefined, 'undefined IS undefined');
+      assert.isDefined( 'hello', 'a string is not undefined' );
     });
   
     /** 3 - Use assert.isOk() or assert.isNotOk() to make the tests pass. **/
     // .isOk(truthy) and .isNotOk(falsey) will pass
     test('#isOk, #isNotOk', function(){
-      assert.fail( null, 'null is falsey');
-      assert.fail( "I'm truthy", 'a string is truthy');
-      assert.fail( true, 'true is truthy' );
+      assert.isNotOk( null, 'null is falsey');
+      assert.isOk( "I'm truthy", 'a string is truthy');
+      assert.isOk( true, 'true is truthy' );
     });
   
     /** 4 - Use assert.isTrue() or assert.isNotTrue() to make the tests pass. **/
     // .isTrue(true) and .isNotTrue(everything else) will pass.
     // .isFalse() and .isNotFalse() also exist.
     test('#isTrue, #isNotTrue', function(){
-      assert.fail( true, 'true is true');
-      assert.fail( !!'double negation', 'double negation of a truthy is true');
-      assert.fail({ value: 'truthy' }, 'A truthy object is NOT TRUE (neither is false...)' );
+      assert.isTrue( true, 'true is true');
+      assert.isTrue( !!'double negation', 'double negation of a truthy is true');
+      assert.isNotTrue({ value: 'truthy' }, 'A truthy object is NOT TRUE (neither is false...)' );
     });
   
     // There are more assertions like these: .isNaN(), .isBoolean(), 
