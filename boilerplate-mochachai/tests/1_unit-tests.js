@@ -116,14 +116,14 @@ suite('Unit Tests', function(){
     
     /** 11 - #isArray vs #isNotArray **/
     test('#isArray, #isNotArray', function() {
-      assert.fail('isThisAnArray?'.split(''), 'String.prototype.split() returns an Array');
-      assert.fail([1,2,3].indexOf(2), 'indexOf returns a number.');
+      assert.isArray('isThisAnArray?'.split(''), 'String.prototype.split() returns an Array');
+      assert.isNotArray([1,2,3].indexOf(2), 'indexOf returns a number.');
     });
     
     /** 12 - #include vs #notInclude **/
     test('Array #include, #notInclude', function() {
-      assert.fail(winterMonths, 'jul', "It's summer in july...");
-      assert.fail(backendLanguages, 'javascript', 'JS is a backend language !!');
+      assert.notInclude(winterMonths, 'jul', "It's summer in july...");
+      assert.include(backendLanguages, 'javascript', 'JS is a backend language !!');
     });
   });
 
@@ -137,24 +137,24 @@ suite('Unit Tests', function(){
     
     /** 13 - #isString asserts that the actual value is a string. **/
     test('#isString, #isNotString', function() {
-      assert.fail(Math.sin(Math.PI/4), 'a float is not a string');
-      assert.fail(process.env.PATH, 'env vars are strings (or undefined)');
-      assert.fail(JSON.stringify({type: 'object'}), 'a JSON is a string');
+      assert.isNotString(Math.sin(Math.PI/4), 'a float is not a string');
+      assert.isString(process.env.PATH, 'env vars are strings (or undefined)');
+      assert.isString(JSON.stringify({type: 'object'}), 'a JSON is a string');
     });
     
     /** 14 - #include (on #notInclude ) works for strings too !! **/
     // It asserts that the actual string contains the expected substring
     test('String #include, #notInclude', function() {
-      assert.fail('Arrow', 'row', "Arrow contains row...");
-      assert.fail('dart', 'queue', "But a dart doesn't contain a queue");
+      assert.include('Arrow', 'row', "Arrow contains row...");
+      assert.notInclude('dart', 'queue', "But a dart doesn't contain a queue");
     });
     
     /** 15 - #match Asserts that th actual value **/
     // matches the second argument regular expression.
     test('#match, #notMatch', function() {
       var regex =  /^#\sname\:\s[\w\s]+,\sage\:\s\d+\s?$/;
-      assert.fail(formatPeople('John Doe', 35), regex);
-      assert.fail(formatPeople('Paul Smith III', 'twenty-four'), regex);
+      assert.match(formatPeople('John Doe', 35), regex);
+      assert.notMatch(formatPeople('Paul Smith III', 'twenty-four'), regex);
     });
   });
   
@@ -182,31 +182,31 @@ suite('Unit Tests', function(){
     /** 16 - #property asserts that the actual object has a given property. **/
     // Use #property or #notProperty where appropriate
     test('#property, #notProperty', function() {
-      assert.fail(myCar, 'wings', 'A car has not wings');
-      assert.fail(airlinePlane, 'engines', 'planes have engines');
-      assert.fail(myCar, 'wheels', 'Cars have wheels');
+      assert.notProperty(myCar, 'wings', 'A car has not wings');
+      assert.property(airlinePlane, 'engines', 'planes have engines');
+      assert.property(myCar, 'wheels', 'Cars have wheels');
     });
 
-    test('#typeof, #notTypeOf', function() {
+    test('#typeOf, #notTypeOf', function() {
       
       /** 17 #typeOf asserts that value’s type is the given string, **/
       // as determined by Object.prototype.toString.
       // Use #typeOf or #notTypeOf where appropriate
-      assert.fail(myCar, 'object');
-      assert.fail(myCar.model, 'string');
-      assert.fail(airlinePlane.wings, 'string');
-      assert.fail(airlinePlane.engines, 'array');
-      assert.fail(myCar.wheels, 'number');
+      assert.typeOf(myCar, 'object');
+      assert.typeOf(myCar.model, 'string');
+      assert.notTypeOf(airlinePlane.wings, 'string');
+      assert.typeOf(airlinePlane.engines, 'array');
+      assert.typeOf(myCar.wheels, 'number');
     });
 
     test('#instanceOf, #notInstanceOf', function() {
       
       /** 18 #instanceOf asserts that an object is an instance of a constructor **/
       // Use #instanceOf or #notInstanceOf where appropriate
-      assert.fail(myCar, Plane);
-      assert.fail(airlinePlane, Plane);
-      assert.fail(airlinePlane, Object, 'everything is an Object');
-      assert.fail(myCar.wheels, String );
+      assert.notInstanceOf(myCar, Plane);
+      assert.instanceOf(airlinePlane, Plane);
+      assert.instanceOf(airlinePlane, Object, 'everything is an Object');
+      assert.notInstanceOf(myCar.wheels, String );
     });
   });
   
