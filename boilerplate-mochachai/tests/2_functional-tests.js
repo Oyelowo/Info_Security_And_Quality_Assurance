@@ -133,7 +133,7 @@ suite('Functional Tests', function() {
             assert.equal(res.body.name, 'Cristoforo', 'res.body.name should be "Cristoforo"');
             assert.equal(res.body.surname, 'Colombo', 'res.body.surname should be "Colombo"' );
           
-          done(); // Never forget the 'done()' callback...
+          done(); // Never forget the 'done()' callback... 
         });
       });
 
