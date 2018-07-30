@@ -270,8 +270,20 @@ suite('Functional Tests', function() {
         // assert that the text inside the element 'span#name' is 'Amerigo'
         // assert that the text inside the element 'span#surname' is 'Vespucci'
         // assert that the element(s) 'span#dates' exist and their count is 1
-        assert.fail();
-        done();
+        browser
+        .fill('surname', 'Vespucci')
+        .pressButton('submit', function(){
+          
+          /** YOUR TESTS HERE, Don't forget to remove assert.fail() **/
+          
+          // pressButton is Async.  Waits for the ajax call to complete...
+        browser.assert.success();
+        browser.assert.text('span#name', 'Amerigo');
+        browser.assert.text('span#surname', 'Vespucci');
+        browser.assert.element('span#dates', 1);
+      done();
+    
+    });  
       
       });
     });
